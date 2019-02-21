@@ -1,13 +1,17 @@
 <template>
   <div class="container">
-    <label class="text-reader">
-      Upload Files
-      <input type="file" @change="loadTextFromFile" multiple="multiple">
-    </label>
+    <div class="upload_section" v-if="!showTable">
+      <h1>Upload Files</h1>
+      <div class="dropbox">
+        <input class="input-file" type="file" @change="loadTextFromFile" multiple="multiple" accept=".text">
+        <p v-if="isInitial">Drag your file(s) here to begin<br> or click to browse</p>
+        <p v-if="isSaving">Uploading {{ fileCount }} files...</p>
+      </div>
+    </div>
     <div class="output" v-if="showTable">
       <div class="header">
-        <p class="main_heading">Final Output Table Formatter</p>
-        <button class="button right">Download Excel</button>
+        <p class="main_heading">Final Output In Table Format</p>
+        <!-- <button class="button right">Download Excel</button> -->
       </div>
       <Tabs
         :tabs="tabs"
@@ -56,6 +60,7 @@ import { VueGoodTable } from 'vue-good-table';
 import 'vue-good-table/dist/vue-good-table.css'
 import Tabs from 'vue-tabs-with-active-line';
 
+
 export default {
   components: {
     VueGoodTable,
@@ -63,8 +68,11 @@ export default {
   },
   data: () => ({
     matchedRecords: [],
+    fileCount: '',
     allRecords: [],
     showTable: false,
+    isSaving: false,
+    isInitial: true,
     replaceStrings: [
       "The SKU data provided is different from what's already in the Amazon catalog. The standard_product_id data provided matches ASIN",
       "but the following data is different from what's already in the Amazon catalog:",
@@ -111,8 +119,11 @@ export default {
       if (!files.length)
         return;
       const finalOutput = [];
+      this.isInitial = false;
       const afterFilter = [];
-      const numFiles = files.length
+      const numFiles = files.length;
+      this.fileCount = numFiles;
+      this.isSaving = true;
       for (let i = 0; i < numFiles; i++) {
         const file = files[i];
         const reader = new FileReader();
@@ -170,25 +181,40 @@ export default {
 };
 </script>
 
-<style>
-.text-reader {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+<style lang="scss">
+/* File Upload css Starts here */
+  .dropbox {
+    outline: 2px dashed grey; /* the dash box */
+    outline-offset: -10px;
+    background: lightcyan;
+    color: dimgray;
+    padding: 10px 10px;
+    min-height: 200px; /* minimum height */
+    position: relative;
+    cursor: pointer;
+  }
 
-  /* Fancy button looking */
-  border: 2px solid black;
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-.text-reader input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  opacity: 0;
-}
+  .input-file {
+    opacity: 0; /* invisible but it's there! */
+    height: 200px;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    left: 0;
+  }
+
+  .dropbox:hover {
+    background: lightblue; /* when mouse over to the drop zone, change color */
+  }
+
+  .dropbox p {
+    font-size: 1.2em;
+    text-align: center;
+    padding: 50px 0;
+  }
+/* File Upload css Ends here */
+</style>
+<style>
 .main_heading {
   text-align: left;
   font-size: 25px;
@@ -219,7 +245,7 @@ export default {
 /* Tabs CSS Start Here */
 .tabs {
   background-color: #337ab7;
-  width: 20%;
+  width: 25%;
   margin: 1rem auto;
 }
 

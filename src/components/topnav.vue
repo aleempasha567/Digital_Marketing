@@ -1,6 +1,6 @@
 <template>
   <div class="topnav" v-bind:class="{ responsive: showMobileMenu }" id="myTopnav">
-    <a href="#home" class="active">Home</a>
+    <img class="logo" src="https://www.jdsports.co.uk/skins/jdsports-desktop/public/img/logos/logo-large-en.png" />
     <div class="dropdown">
       <button class="dropbtn">Activinstinct (AI)
         <i class="fas fa-caret-down"></i>
@@ -82,6 +82,11 @@ export default {
   overflow: hidden;
 }
 
+.topnav .logo {
+  float: left;
+  margin: 0.5rem;
+}
+
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
@@ -129,7 +134,7 @@ export default {
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 11;
 }
 
 /* Style the links inside the dropdown */
