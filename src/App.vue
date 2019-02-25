@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <topnav />
+    <!-- <topnav /> -->
     <text-reader />
   </div>
 </template>
 
 <script>
-import topnav from './components/topnav.vue'
+// import topnav from './components/topnav.vue'
 import TextReader from './components/TextReader.vue'
 
 export default {
   name: 'app',
   data: () => ({ text: "" }),
   components: {
-    topnav,
+    // topnav,
     TextReader
   }
 }
