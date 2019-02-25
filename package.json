@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "start": "node server.js",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "publish": "npm run build && git add . && git commit -m 'New Build Released' && git push"
   },
   "dependencies": {
     "express": "^4.16.4",
