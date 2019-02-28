@@ -84,7 +84,7 @@ export default {
     columns_filtered: [
       {
         label: 'PLU',
-        field: 'product',
+        field: 'PLU',
         type: 'number',
       },
       {
@@ -108,7 +108,7 @@ export default {
     columns_without_filter: [
       {
         label: 'PLU',
-        field: 'product',
+        field: 'PLU',
         type: 'number',
       },
       {
@@ -164,15 +164,15 @@ export default {
                       replaceString = that.replaceAllStrings(str, '', replaceString);
                     });
                     let obj = {};
-                    obj['product'] = productSKU[0];
-                    obj['ASIN'] = replaceString.trim().substring(0,10);
+                    obj['PLU'] = productSKU[0];
                     obj['SKU'] = productSKU[1];
                     obj['error-code'] = singleRow['2'];
+                    obj['ASIN'] = replaceString.trim().substring(0,10);
                     obj['error-msg'] = replaceString.trim().substring(11);
                     finalOutput.push(obj);
                   } else if(productSKU[1] !== 'undefined' || productSKU[1] !== undefined) {
                     let obj = {};
-                    obj['product'] = productSKU[0];
+                    obj['PLU'] = productSKU[0];
                     obj['SKU'] = productSKU[1];
                     obj['error-code'] = singleRow['2'];
                     obj['error-msg'] = singleRow['4'];
