@@ -83,7 +83,7 @@ export default {
     ],
     columns_filtered: [
       {
-        label: 'Product',
+        label: 'PLU',
         field: 'product',
         type: 'number',
       },
@@ -107,7 +107,7 @@ export default {
     ],
     columns_without_filter: [
       {
-        label: 'Product',
+        label: 'PLU',
         field: 'product',
         type: 'number',
       },
@@ -126,8 +126,8 @@ export default {
       },
     ],
     tabs: [
-      { title: 'Filtered Data', value: 'tab1' },
-      { title: 'Data after Filter', value: 'tab2' },
+      { title: '8541 & 8542 Errors', value: 'tab1' },
+      { title: 'Remaining Errors', value: 'tab2' },
     ],
     currentTab: 'tab1',
   }),
@@ -334,7 +334,7 @@ export default {
 /* Tabs CSS Start Here */
 .tabs {
   background-color: #337ab7;
-  width: 25%;
+  width: 40%;
   margin: 1rem auto;
 }
 
