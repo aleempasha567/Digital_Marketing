@@ -354,7 +354,7 @@ export default {
         typeof JSONData != "object" ? JSON.parse(JSONData) : JSONData;
       let CSV = "";
       //Set Report title in first row or line
-      CSV += ReportTitle + "\r\n\n";
+      // CSV += ReportTitle + "\r\n\n";
       //This condition will generate the Label/Header
       if (ShowLabel) {
         let row = "";
