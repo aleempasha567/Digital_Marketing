@@ -343,9 +343,9 @@ export default {
     },
     downloadExcel() {
       if (this.currentTab === "tab1") {
-        this.JSONToCSVConvertor(this.matchedRecords, "Filtered Data", true);
+        this.JSONToCSVConvertor(this.matchedRecords, "", true);
       } else if (this.currentTab === "tab2") {
-        this.JSONToCSVConvertor(this.allRecords, "Data after Filter", true);
+        this.JSONToCSVConvertor(this.allRecords, "", true);
       }
     },
     JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
