@@ -185,7 +185,7 @@ export default {
       },
       {
         label: "Error Code",
-        field: "error-code"
+        field: "erro_code"
       },
       {
         label: "Quantity",
@@ -197,7 +197,7 @@ export default {
       },
       {
         label: "Error Message",
-        field: "error-msg"
+        field: "error_msg"
       }
     ],
     columns_without_filter: [
@@ -213,7 +213,7 @@ export default {
       },
       {
         label: "Error Code",
-        field: "error-code"
+        field: "erro_code"
       },
       {
         label: "Quantity",
@@ -221,11 +221,11 @@ export default {
       },
       {
         label: "Error Status",
-        field: "error-status"
+        field: "error_status"
       },
       {
         label: "Error Message",
-        field: "error-msg"
+        field: "error_msg"
       }
     ],
     tabs: [
@@ -244,6 +244,8 @@ export default {
       if (!files.length) return;
       const finalOutput = [];
       const afterFilter = [];
+      const uniquesMatchedRecords = [];
+      const uniquesAllRecords = [];
       const numFiles = files.length;
       this.fileCount = numFiles;
       for (let i = 0; i < numFiles; i++) {
@@ -266,8 +268,7 @@ export default {
                   if (
                     !isEmpty(stock) &&
                     stock[0]["stock_qty"] != 0 &&
-                    (stock[0]["stock_qty"] !== "undefined" ||
-                      stock[0]["stock_qty"] !== undefined)
+                    stock[0]["stock_qty"] !== undefined
                   ) {
                     console.log(productSKU[1], stock); //eslint-disable-line no-console
                     if (
@@ -291,10 +292,10 @@ export default {
                       let obj = {};
                       obj["PLU"] = productSKU[0];
                       obj["SKU"] = productSKU[1];
-                      obj["error-code"] = singleRow["2"];
+                      obj["erro_code"] = singleRow["2"];
                       obj["Quantity"] = stock[0]["stock_qty"];
                       obj["ASIN"] = replaceString.trim().substring(0, 10);
-                      obj["error-msg"] = replaceString
+                      obj["error_msg"] = replaceString
                         .trim()
                         .substring(11)
                         .trim();
@@ -307,16 +308,42 @@ export default {
                       let obj = {};
                       obj["PLU"] = productSKU[0];
                       obj["SKU"] = productSKU[1];
-                      obj["error-code"] = singleRow["2"];
+                      obj["erro_code"] = singleRow["2"];
                       obj["Quantity"] = stock[0]["stock_qty"];
-                      obj["error-status"] = this.replaceErrorMsg
+                      obj["error_status"] = this.replaceErrorMsg
                         .filter(obj => obj.error_code == singleRow["2"])
                         .map(obj => obj.error_msg)
                         .toString();
-                      obj["error-msg"] = singleRow["4"].trim();
+                      obj["error_msg"] = singleRow["4"].trim();
                       afterFilter.push(obj);
                       console.log(obj); //eslint-disable-line no-console
                     }
+                    finalOutput.map(x =>
+                      uniquesMatchedRecords.filter(
+                        a =>
+                          a.PLU == x.PLU &&
+                          a.SKU == x.SKU &&
+                          a.erro_code == x.erro_code &&
+                          a.Quantity == x.Quantity &&
+                          a.ASIN == x.ASIN &&
+                          a.error_msg == x.error_msg
+                      ).length > 0
+                        ? null
+                        : uniquesMatchedRecords.push(x)
+                    );
+                    afterFilter.map(x =>
+                      uniquesAllRecords.filter(
+                        a =>
+                          a.PLU == x.PLU &&
+                          a.SKU == x.SKU &&
+                          a.erro_code == x.erro_code &&
+                          a.Quantity == x.Quantity &&
+                          a.error_status == x.error_status &&
+                          a.error_msg == x.error_msg
+                      ).length > 0
+                        ? null
+                        : uniquesAllRecords.push(x)
+                    );
                   }
                 }
               }
@@ -327,8 +354,8 @@ export default {
           this.isLoading = false;
           this.showTable = true;
         };
-        this.matchedRecords = finalOutput;
-        this.allRecords = afterFilter;
+        this.matchedRecords = uniquesMatchedRecords;
+        this.allRecords = uniquesAllRecords;
         reader.onerror = event => {
           alert(event.target.error.name);
         };
