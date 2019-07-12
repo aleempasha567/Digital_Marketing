@@ -13,11 +13,11 @@
               @change="loadCSVFromFile"
               multiple="multiple"
               accept=".text"
-            >
+            />
             <p>
               Drag your file here to begin
-              <br>or
-              <br>click to browse
+              <br />or
+              <br />click to browse
             </p>
           </div>
         </div>
@@ -30,11 +30,11 @@
               @change="loadTextFromFile"
               multiple="multiple"
               accept=".text"
-            >
+            />
             <p>
               Drag your file here to begin
-              <br>or
-              <br>click to browse
+              <br />or
+              <br />click to browse
             </p>
           </div>
         </div>
@@ -48,9 +48,9 @@
             class="right fileName"
             placeholder="Please Enter File Name"
             v-model="downloadFileName"
-          >
+          />
         </div>
-        <Tabs :tabs="tabs" :current-tab="currentTab" @onClick="handleClick"/>
+        <Tabs :tabs="tabs" :current-tab="currentTab" @onClick="handleClick" />
         <div class="content">
           <div v-if="currentTab === 'tab1'">
             <vue-good-table
