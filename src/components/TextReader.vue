@@ -259,7 +259,7 @@ export default {
             if (index > 4 && line !== null && line !== "") {
               // Avoiding the first 5 lines
               const singleRow = line.split("\t"); // Splitting the single line into coloumns
-              if (singleRow["1"] !== "undefined") {
+              if (singleRow["1"] !== "undefined" && !isNaN(singleRow["1"])) {
                 const productSKU = singleRow["1"].split(".");
                 if (productSKU[1]) {
                   const stock = this.stock_result.filter(function(el) {
