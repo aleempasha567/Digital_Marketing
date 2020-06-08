@@ -120,57 +120,55 @@ export default {
       ". If this is the right ASIN for your product, update your data to match what's in the Amazon catalog. If it's not the right ASIN, make sure that your data for item_id is correct."
     ],
     replaceErrorMsg: [
+      { error_code: "20005", error_msg: "Associated Error" },
+      { error_code: "8805", error_msg: "Brand Issue" },
+      { error_code: "99012", error_msg: "Check" },
+      { error_code: "99022", error_msg: "Check" },
+      { error_code: "96008", error_msg: "Condition Notes are Not Accepted" },
+      { error_code: "8105", error_msg: "Data does not match the list of valid values" },
+      { error_code: "8123", error_msg: "Deleted Item" },
       { error_code: "5461", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "8008", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "8566", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "8567", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "8573", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "90041", error_msg: "Gender Missing" },
+      { error_code: "300060", error_msg: "Image URL Error" },
+      { error_code: "300404", error_msg: "Image URL Issue" },
+      { error_code: "8056", error_msg: "Incorrect ASIN" },
+      { error_code: "5002", error_msg: "Internal Error" },
+      { error_code: "1591444", error_msg: "Internal Error" },
+      { error_code: "20000", error_msg: "Media Content Could Not Be Downloaded" },
+      { error_code: "8005", error_msg: "Missing Attribute Like Product ID/Colour/Brand" },
+      { error_code: "8058", error_msg: "Missing Attribute Like Product ID/Colour/Brand" },
+      { error_code: "8560", error_msg: "Missing Attribute Like Product ID/Colour/Brand" },
+      { error_code: "4400", error_msg: "Not Approved to offer seller-fulfilled products" },
       { error_code: "6024", error_msg: "Not Authorized" },
       { error_code: "6038", error_msg: "Not Authorized" },
       { error_code: "6039", error_msg: "Not Authorized" },
       { error_code: "6040", error_msg: "Not Authorized" },
-      {
-        error_code: "8005",
-        error_msg: "Missing Attribute Like Product ID/Colour/Brand"
-      },
-      { error_code: "8007", error_msg: "Parent & Child SKU issue" },
-      { error_code: "8008", error_msg: "EAN/ASIN does not match any Product" },
       { error_code: "8026", error_msg: "Not Authorized" },
-      {
-        error_code: "8058",
-        error_msg: "Missing Attribute Like Product ID/Colour/Brand"
-      },
-      { error_code: "8066", error_msg: "Variation & V.Theme Issue" },
-      { error_code: "8123", error_msg: "Deleted Item" },
-      {
-        error_code: "8560",
-        error_msg: "Missing Attribute Like Product ID/Colour/Brand"
-      },
-      { error_code: "8566", error_msg: "EAN/ASIN does not match any Product" },
-      { error_code: "8567", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "8007", error_msg: "Parent & Child SKU issue" },
+      { error_code: "17002", error_msg: "Price Error" },
+      { error_code: "90114", error_msg: "Price Missing" },
       { error_code: "8572", error_msg: "Product ID is Not Accepted by Amazon" },
-      { error_code: "8573", error_msg: "EAN/ASIN does not match any Product" },
+      { error_code: "90057", error_msg: "Product Type Not Valid" },
+      { error_code: "99001", error_msg: "Required Field Missing" },
+      { error_code: "99006", error_msg: "Required Field Missing" },
+      { error_code: "99019", error_msg: "Required Field Missing" },
+      { error_code: "5665", error_msg: "Restricted" },
+      { error_code: "90202", error_msg: "Restricted" },
+      { error_code: "99003", error_msg: "Size Missing In AIR" },
+      { error_code: "13013", error_msg: "SKU is Not Available Amazon Catalog" },
+      { error_code: "96009", error_msg: "Title Issue" },
+      { error_code: "99038", error_msg: "Title Issue" },
+      { error_code: "8066", error_msg: "Variation & V.Theme Issue" },
       { error_code: "8802", error_msg: "Variation & V.Theme Issue" },
       { error_code: "8804", error_msg: "Variation & V.Theme Issue" },
-      { error_code: "8805", error_msg: "Brand Issue" },
-      { error_code: "13013", error_msg: "SKU is Not Available Amazon Catalog" },
-      {
-        error_code: "20000",
-        error_msg: "Media Content Could Not Be Downloaded"
-      },
       { error_code: "20002", error_msg: "Variation & V.Theme Issue" },
-      { error_code: "20005", error_msg: "Associated Error" },
-      { error_code: "90057", error_msg: "Product Type Not Valid" },
-      { error_code: "90061", error_msg: "Warnings" },
-      { error_code: "90114", error_msg: "Price Missing" },
-      { error_code: "90202", error_msg: "Restricted" },
-      { error_code: "96008", error_msg: "Condition Notes are Not Accepted" },
-      { error_code: "96009", error_msg: "Title Issue" },
-      { error_code: "99001", error_msg: "Required Field Missing" },
-      { error_code: "99003", error_msg: "Size Missing In AIR" },
-      { error_code: "99006", error_msg: "Required Field Missing" },
       { error_code: "99010", error_msg: "Variation & V.Theme Issue" },
-      { error_code: "99012", error_msg: "Check" },
-      { error_code: "99019", error_msg: "Required Field Missing" },
-      { error_code: "99022", error_msg: "Check" },
-      { error_code: "99038", error_msg: "Title Issue" },
-      { error_code: "300404", error_msg: "Image URL Issue" }
+      { error_code: "8047", error_msg: "Variation Issue" },
+      { error_code: "90061", error_msg: "Warnings" }
     ],
     columns_filtered: [
       {
@@ -553,8 +551,9 @@ export default {
 /* Tabs CSS Start Here */
 .tabs {
   background-color: #337ab7;
-  width: 40%;
+  width: 32%;
   margin: 1rem auto;
+  border-radius: 100px;
 }
 
 .tabs__item {
