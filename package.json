@@ -11,7 +11,7 @@
     "heroku-postbuild": "echo Skip build on Heroku"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "^4.17.15",
     "node-sass": "^4.14.1",
     "path": "^0.12.7",
